@@ -1,0 +1,15 @@
+{
+    "name": "noeticitservices/excel",
+    "description": "Nitseditor Excel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nitish Kumar",
+            "email": "nitishkumar@noeticitservices.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.3",
+        "maatwebsite/excel": "^3.1"
+    }
+}
