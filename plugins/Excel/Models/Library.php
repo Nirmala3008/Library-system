@@ -19,5 +19,9 @@ class Library extends AbstractModel {
     {
         return $this->hasMany(Standard::class,'library_id','id');
     }
+    public function subject()
+    {
+        return $this->belongsToMany(Subject::class,'subject_library','library_id','subject_id');
+    }
 
 }

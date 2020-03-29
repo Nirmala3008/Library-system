@@ -4,20 +4,28 @@ namespace Nitseditor\Plugins\Excel\Models;
 use Nitseditor\Framework\Models\AbstractModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Standard extends AbstractModel {
+class BookIssue extends AbstractModel {
 
     use SoftDeletes;
 
     protected $guarded= [];
 
-    public function Subjects()
+    public function student()
     {
-        return $this->belongsToMany(Subject::class,'subject_library','standard_id','subject_id');
+        return $this->belongsTo(Student::class);
     }
 
     public function library()
     {
         return $this->belongsTo(Library::class);
     }
+
+    public function book()
+    {
+        return $this->belongsTo(Books::class);
+    }
+
+
+
 
 }

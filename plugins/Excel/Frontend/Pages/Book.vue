@@ -5,12 +5,12 @@
                 <div class="kt-portlet__head">
                     <div class="kt-portlet__head-label">
                         <h3 class="kt-portlet__head-title">
-                            Student
+                            Book
                         </h3>
                     </div>
                     <div class="kt-portlet__head-toolbar">
                         <div class="kt-portlet__head-actions">
-                            <router-link to="/plugins/Excel/add-student">
+                            <router-link to="/plugins/Excel/add-book">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add_stream_modal" >
                                     Add New
                                 </button>
@@ -50,28 +50,27 @@
                                 <thead>
                                 <tr>
                                     <th>Sr No.</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Roll No.</th>
-                                    <th>Email</th>
-                                    <th>State</th>
-                                    <th>Region</th>
+                                    <th>Student Name</th>
+                                    <th>Library</th>
+                                    <th>Standard</th>
+                                    <th>Subject</th>
+                                    <th>Book Name</th>
+                                    <th>Issue Date</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-for="(item,index) in students">
+                                <tr v-for="(item,index) in books">
                                     <th scope="row">{{index+1}}</th>
-                                    <td>{{item.first_name}}</td>
-                                    <td>{{item.last_name}}</td>
-                                    <td>{{item.roll_number}}</td>
-                                    <td>{{item.email}}</td>
-                                    <td>{{ item.state }}</td>
-                                    <td>{{ item.region }}</td>
-
+                                    <td>{{item.student_name}}</td>
+                                    <td>{{ item.library_name }}</td>
+                                    <td>{{ item.standard }}</td>
+                                    <td>{{item.subjects}}</td>
+                                    <td>{{item.book_name}}</td>
+                                    <td>{{item.issue_date}}</td>
                                     <td>
-                                        <router-link style="color: #FF9900;" :to="'/plugins/Excel/edit-student/'+item.id">
+                                        <router-link style="color: #FF9900;" :to="'/plugins/Excel/edit-book/'+item.id">
                                             <i class="flaticon-edit" aria-hidden="true"></i>
                                         </router-link>
                                     </td>
@@ -92,26 +91,27 @@
             </div>
         </div>
     </div>
+
 </template>
 
 <script>
     import Swal from 'sweetalert2'
     export default {
-        name: "StudentView",
+        name: "Book",
         data() {
             return {
                 search: '',
-                students: []
+                books: []
             }
         },
         methods: {
             fetchData() {
-                axios.get('/nits-plugins-api/Excel/students?search='+this.search).then(response => {
+                axios.get('/nits-plugins-api/Excel/books?search='+this.search).then(response => {
                     if(response.status === 200) {
-                        this.students = response.data.data;
+                        this.books = response.data.data;
                     }
                 })
-                console.log(this.students);
+                console.log(this.books);
             },
             deleteData(id) {
                 Swal.fire({
@@ -124,7 +124,7 @@
                     confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
                     if (result.value) {
-                        axios.delete('/nits-plugins-api/Excel/students/'+id).then(response => {
+                        axios.delete('/nits-plugins-api/Excel/books/'+id).then(response => {
                             if(response.status === 200) {
                                 Swal.fire(
                                     'Deleted!',

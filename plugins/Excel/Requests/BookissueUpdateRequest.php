@@ -4,7 +4,7 @@ namespace Nitseditor\Plugins\Excel\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegistrationStoreRequest extends FormRequest
+class BookissueUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class RegistrationStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**

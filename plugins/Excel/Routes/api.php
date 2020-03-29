@@ -23,3 +23,4 @@ Route::get('/regions','StudentController@regions');
 //Route::apiResource('standards', 'StandardController');
 
 Route::apiResource('subjects', 'SubjectController');
+Route::apiResource('bookissues', 'BookissueController');

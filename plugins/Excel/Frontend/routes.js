@@ -18,10 +18,22 @@ export default [
         path: 'add-student',
         component: Vue.component('Excel-students', () => import('./Pages/AddStudent.vue')),
     },
+
     // {
     //     name: 'edit-student',
     //     path: 'edit-student/:id',
     //     component: Vue.component('Excel-students', () => import('./Pages/EditStudent.vue')),
     // },
+
+    {
+        name: 'add-book',
+        path: 'add-book',
+        component: Vue.component('Excel-books', () => import('./Pages/BookIssueForm.vue')),
+    },
+    {
+        name: 'book',
+        path: 'book',
+        component: Vue.component('Excel-books', () => import('./Pages/Book.vue')),
+    },
 
 ];

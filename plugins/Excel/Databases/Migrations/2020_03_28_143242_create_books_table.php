@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSubjectLibraryTable extends Migration
+class CreateBooksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateSubjectLibraryTable extends Migration
      */
     public static function up()
     {
-        Schema::create('subject_library', function (Blueprint $table) {
+        Schema::create('books', function (Blueprint $table) {
             $table->bigIncrements("id");
-            $table->unsignedBigInteger('library_id');
-            $table->unsignedBigInteger('standard_id');
+            $table->string('book_name');
 
-            $table->foreign('library_id')->references('id')->on('libraries');
-            $table->foreign('standard_id')->references('id')->on('standards');
 
             $table->timestamps();
             $table->softDeletes();
@@ -33,7 +30,6 @@ class CreateSubjectLibraryTable extends Migration
      */
     public static function down()
     {
-        Schema::dropIfExists('subject_library');
-
+        Schema::dropIfExists('books');
     }
 }

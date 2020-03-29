@@ -86,45 +86,6 @@
                                     </div>
                                 </div>
 
-                                <div class="row" style="margin-top: 15px">
-                                    <div class="col-md-4">Add Libraries:</div>
-                                    <div class="col-md-4" style="margin-right: 400px">
-                                        <button type="button" class="btn btn-primary" @click.prevent="addFields">
-                                            Add Libraries
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="row" v-for="(item, index) in libraries">
-                                    <div class="col-md-4" style="margin-top: 10px">
-                                        <input type="text" class="form-control m-input m-input--solid" placeholder="Library name." v-model="item.library_name">
-                                        <span class="text-danger" v-if="errors && errors['libraries.'+index+'.library_name']">{{ errors['libraries.'+index+'.library_name'][0] }}</span>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <a style="color: #B22222;" @click.prevent="removeField(index)">
-                                            <i class="flaticon-cancel" aria-hidden="true"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="row" style="margin-top: 15px">
-                                    <div class="col-md-4">Add Standards:</div>
-                                    <div class="col-md-4" style="margin-right: 400px">
-                                        <button type="button"  @click.prevent="addFields">
-                                            Add Standards
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="row" v-for="(item, index) in standards">
-                                    <div class="col-md-4" style="margin-top: 10px">
-                                        <input type="text" class="form-control m-input m-input--solid" placeholder="Standard." v-model="item.standard">
-                                        <span class="text-danger" v-if="errors && errors['standards.'+index+'.standard']">{{ errors['libraries.'+index+'.standards'][0] }}</span>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <a style="color: #B22222;" @click.prevent="removeField(index)">
-                                            <i class="flaticon-cancel" aria-hidden="true"></i>
-                                        </a>
-                                    </div>
-                                </div>
                             </div>
 
 
@@ -170,14 +131,7 @@
                 states:[],
                 region:'',
                 regions:[],
-                libraries: [
-                    {
-                        library_name: ''
-                    }],
-                standards:[
-                    {
-                        standard: ''
-                    }],
+
                 loading: false,
                 errors: {},
 
@@ -210,8 +164,6 @@
                     email:this.email,
                     state_id:this.state,
                     region_id:this.region,
-                    libraries:this.libraries,
-                    standards:this.standards,
 
                 };
 
@@ -225,19 +177,7 @@
                 })
             },
 
-            addFields() {
-                this.libraries.push({library_name: ''})
-            },
-            removeField(index) {
-                this.libraries.splice(index, 1);
-            },
 
-            addFields() {
-                this.standards.push({standard: ''})
-            },
-            removeField(index) {
-                this.standards.splice(index, 1);
-            }
 
 
         }
